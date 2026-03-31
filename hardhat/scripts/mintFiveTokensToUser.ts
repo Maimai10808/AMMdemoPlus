@@ -1,5 +1,17 @@
 import hre from "hardhat";
 import { parseEther } from "viem";
+import fs from "node:fs";
+import path from "node:path";
+
+type Deployment = {
+  tokens: {
+    tokenA: { address: `0x${string}`; symbol: string };
+    tokenB: { address: `0x${string}`; symbol: string };
+    tokenC: { address: `0x${string}`; symbol: string };
+    tokenD: { address: `0x${string}`; symbol: string };
+    tokenE: { address: `0x${string}`; symbol: string };
+  };
+};
 
 async function main() {
   const { viem } = await hre.network.connect();
@@ -8,11 +20,27 @@ async function main() {
 
   const userAddress = "0x70997970c51812dc3a010c7d01b50e0d17dc79c8";
 
-  const tokenAAddress = "0xe6e340d132b5f46d1e472debcd681b2abc16e57e"; // dETH
-  const tokenBAddress = "0xc3e53f4d16ae77db1c982e75a937b9f60fe63690"; // dUSD
-  const tokenCAddress = "0x84ea74d481ee0a5332c457a4d796187f6ba67feb"; // dBTC
-  const tokenDAddress = "0x9e545e3c0baab3e08cdfd552c960a1050f373042"; // dXRP
-  const tokenEAddress = "0xa82ff9afd8f496c3d6ac40e2a0f282e47488cfc9"; // dDOGE
+  const deploymentPath = path.join(
+    process.cwd(),
+    "deployments",
+    "localhost.json",
+  );
+  const deployment = JSON.parse(
+    fs.readFileSync(deploymentPath, "utf8"),
+  ) as Deployment;
+
+  const tokenAAddress = deployment.tokens.tokenA.address;
+  const tokenBAddress = deployment.tokens.tokenB.address;
+  const tokenCAddress = deployment.tokens.tokenC.address;
+  const tokenDAddress = deployment.tokens.tokenD.address;
+  const tokenEAddress = deployment.tokens.tokenE.address;
+
+  console.log("Using deployment file:", deploymentPath);
+  console.log("tokenA:", tokenAAddress);
+  console.log("tokenB:", tokenBAddress);
+  console.log("tokenC:", tokenCAddress);
+  console.log("tokenD:", tokenDAddress);
+  console.log("tokenE:", tokenEAddress);
 
   const tokenA = await viem.getContractAt("MockERC20", tokenAAddress);
   const tokenB = await viem.getContractAt("MockERC20", tokenBAddress);
@@ -20,7 +48,6 @@ async function main() {
   const tokenD = await viem.getContractAt("MockERC20", tokenDAddress);
   const tokenE = await viem.getContractAt("MockERC20", tokenEAddress);
 
-  // 你可以改这里的数量
   const amountA = parseEther("100"); // 100 dETH
   const amountB = parseEther("500000"); // 500000 dUSD
   const amountC = parseEther("20"); // 20 dBTC

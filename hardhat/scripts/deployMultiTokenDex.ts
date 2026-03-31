@@ -1,5 +1,7 @@
 import hre from "hardhat";
 import { parseEther } from "viem";
+import fs from "node:fs";
+import path from "node:path";
 
 async function main() {
   const { viem } = await hre.network.connect();
@@ -50,7 +52,7 @@ async function main() {
     tokenD.address,
     tokenE.address,
   ];
-  const weights = [5000n, 2000n, 1000n, 1000n, 1000n]; // 50% / 20% / 10%/ 10%/ 10%
+  const weights = [5000n, 2000n, 1000n, 1000n, 1000n];
 
   const createPoolHash = await factory.write.createPool([tokens, weights], {
     account: walletClient.account,
@@ -94,6 +96,67 @@ async function main() {
       parseEther("10000"),
     ]),
   });
+
+  const deployment = {
+    network: "localhost",
+    chainId: Number(await publicClient.getChainId()),
+    deployer: walletClient.account.address,
+    tokens: {
+      tokenA: {
+        name: "Demo ETH",
+        symbol: "dETH",
+        address: tokenA.address,
+        decimals: 18,
+      },
+      tokenB: {
+        name: "Demo USD",
+        symbol: "dUSD",
+        address: tokenB.address,
+        decimals: 18,
+      },
+      tokenC: {
+        name: "Demo BTC",
+        symbol: "dBTC",
+        address: tokenC.address,
+        decimals: 18,
+      },
+      tokenD: {
+        name: "Demo XRP",
+        symbol: "dXRP",
+        address: tokenD.address,
+        decimals: 18,
+      },
+      tokenE: {
+        name: "Demo DOGE",
+        symbol: "dDOGE",
+        address: tokenE.address,
+        decimals: 18,
+      },
+    },
+    factory: factory.address,
+    router: router.address,
+    pool: poolAddress,
+    poolConfig: {
+      tokens,
+      weights: weights.map((w) => w.toString()),
+    },
+    seededToDeployer: {
+      dETH: parseEther("10000").toString(),
+      dUSD: parseEther("30000000").toString(),
+      dBTC: parseEther("1000").toString(),
+      dXRP: parseEther("10000").toString(),
+      dDOGE: parseEther("10000").toString(),
+    },
+    createdAt: new Date().toISOString(),
+  };
+
+  const outputDir = path.join(process.cwd(), "deployments");
+  const outputFile = path.join(outputDir, "localhost.json");
+
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(outputFile, JSON.stringify(deployment, null, 2), "utf8");
+
+  console.log(`deployment file saved to: ${outputFile}`);
 }
 
 main().catch((e) => {

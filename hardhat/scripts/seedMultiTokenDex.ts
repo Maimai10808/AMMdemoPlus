@@ -1,19 +1,50 @@
 import hre from "hardhat";
 import { parseEther } from "viem";
+import fs from "node:fs";
+import path from "node:path";
+
+type Deployment = {
+  tokens: {
+    tokenA: { address: `0x${string}`; symbol: string };
+    tokenB: { address: `0x${string}`; symbol: string };
+    tokenC: { address: `0x${string}`; symbol: string };
+    tokenD: { address: `0x${string}`; symbol: string };
+    tokenE: { address: `0x${string}`; symbol: string };
+  };
+  router: `0x${string}`;
+  pool: `0x${string}`;
+};
 
 async function main() {
   const { viem } = await hre.network.connect();
   const publicClient = await viem.getPublicClient();
   const [walletClient] = await viem.getWalletClients();
 
-  // 改成部署输出地址
-  const tokenAAddress = "0xe6e340d132b5f46d1e472debcd681b2abc16e57e";
-  const tokenBAddress = "0xc3e53f4d16ae77db1c982e75a937b9f60fe63690";
-  const tokenCAddress = "0x84ea74d481ee0a5332c457a4d796187f6ba67feb";
-  const tokenDAddress = "0x9e545e3c0baab3e08cdfd552c960a1050f373042";
-  const tokenEAddress = "0xa82ff9afd8f496c3d6ac40e2a0f282e47488cfc9";
-  const routerAddress = "0x851356ae760d987e095750cceb3bc6014560891c";
-  const poolAddress = "0x9467A509DA43CB50EB332187602534991Be1fEa4";
+  const deploymentPath = path.join(
+    process.cwd(),
+    "deployments",
+    "localhost.json",
+  );
+  const deployment = JSON.parse(
+    fs.readFileSync(deploymentPath, "utf8"),
+  ) as Deployment;
+
+  const tokenAAddress = deployment.tokens.tokenA.address;
+  const tokenBAddress = deployment.tokens.tokenB.address;
+  const tokenCAddress = deployment.tokens.tokenC.address;
+  const tokenDAddress = deployment.tokens.tokenD.address;
+  const tokenEAddress = deployment.tokens.tokenE.address;
+  const routerAddress = deployment.router;
+  const poolAddress = deployment.pool;
+
+  console.log("Using deployment file:", deploymentPath);
+  console.log("tokenA:", tokenAAddress);
+  console.log("tokenB:", tokenBAddress);
+  console.log("tokenC:", tokenCAddress);
+  console.log("tokenD:", tokenDAddress);
+  console.log("tokenE:", tokenEAddress);
+  console.log("router:", routerAddress);
+  console.log("pool:", poolAddress);
 
   const tokenA = await viem.getContractAt("MockERC20", tokenAAddress);
   const tokenB = await viem.getContractAt("MockERC20", tokenBAddress);

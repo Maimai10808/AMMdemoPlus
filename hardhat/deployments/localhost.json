@@ -1,0 +1,64 @@
+{
+  "network": "localhost",
+  "chainId": 31337,
+  "deployer": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+  "tokens": {
+    "tokenA": {
+      "name": "Demo ETH",
+      "symbol": "dETH",
+      "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "decimals": 18
+    },
+    "tokenB": {
+      "name": "Demo USD",
+      "symbol": "dUSD",
+      "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "decimals": 18
+    },
+    "tokenC": {
+      "name": "Demo BTC",
+      "symbol": "dBTC",
+      "address": "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
+      "decimals": 18
+    },
+    "tokenD": {
+      "name": "Demo XRP",
+      "symbol": "dXRP",
+      "address": "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
+      "decimals": 18
+    },
+    "tokenE": {
+      "name": "Demo DOGE",
+      "symbol": "dDOGE",
+      "address": "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
+      "decimals": 18
+    }
+  },
+  "factory": "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707",
+  "router": "0x0165878a594ca255338adfa4d48449f69242eb8f",
+  "pool": "0x61c36a8d610163660E21a8b7359e1Cac0C9133e1",
+  "poolConfig": {
+    "tokens": [
+      "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
+      "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
+      "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9"
+    ],
+    "weights": [
+      "5000",
+      "2000",
+      "1000",
+      "1000",
+      "1000"
+    ]
+  },
+  "seededToDeployer": {
+    "dETH": "10000000000000000000000",
+    "dUSD": "30000000000000000000000000",
+    "dBTC": "1000000000000000000000",
+    "dXRP": "10000000000000000000000",
+    "dDOGE": "10000000000000000000000"
+  },
+  "createdAt": "2026-03-31T13:36:25.263Z"
+}

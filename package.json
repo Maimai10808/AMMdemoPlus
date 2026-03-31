@@ -1,0 +1,13 @@
+{
+  "name": "ammdemoplus-root",
+  "private": true,
+  "scripts": {
+    "chain": "cd hardhat && npx hardhat node",
+    "deploy:local": "cd hardhat && npx hardhat run scripts/deployMultiTokenDex.ts --network localhost",
+    "seed:local": "cd hardhat && npx hardhat run scripts/seedMultiTokenDex.ts --network localhost",
+    "mint:local": "cd hardhat && npx hardhat run scripts/mintFiveTokensToUser.ts --network localhost",
+    "bootstrap:local": "npm run deploy:local && npm run seed:local && npm run mint:local",
+    "frontend": "cd nextjs/ammdemopluss && npm run dev",
+    "dev": "npm run bootstrap:local && npm run frontend"
+  }
+}
