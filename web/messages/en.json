@@ -61,7 +61,31 @@
       "removeLiquidityFailed": "Failed to remove liquidity: {message}",
       "swapSuccess": "Swap completed successfully",
       "swapFailed": "Swap failed: {message}",
-      "sameTokenError": "Token in and token out cannot be the same"
+      "sameTokenError": "Token in and token out cannot be the same",
+      "mintTestTokensSuccess": "Test tokens minted successfully",
+      "mintTestTokensFailed": "Failed to mint test tokens: {message}",
+      "claimFaucetSuccess": "Faucet tokens claimed successfully",
+      "claimFaucetFailed": "Failed to claim faucet tokens: {message}"
     }
+  },
+  "InsufficientBalanceDialog": {
+    "title": "Insufficient balance",
+    "description": "Your {symbol} balance is not enough for this action. You can mint more local test tokens to continue.",
+    "cancel": "Cancel",
+    "mint": "Mint test tokens"
+  },
+  "FaucetDialog": {
+    "title": "Request test tokens",
+    "description": "Your balance is insufficient. Select a token and choose how much you want to claim from the faucet.",
+    "tokenLabel": "Token",
+    "amountLabel": "Amount",
+    "amountPlaceholder": "Enter {symbol} amount",
+    "cancel": "Cancel",
+    "claim": "Claim from faucet",
+    "loading": "Processing..."
+  },
+  "LoadingOverlay": {
+    "title": "Processing transaction",
+    "description": "Please wait while we connect to your wallet, request a signature, or confirm the transaction on-chain."
   }
 }

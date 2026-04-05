@@ -38,7 +38,7 @@
     "tokenOut": "Ausgabe-Token",
     "amountIn": "Eingabemenge",
     "amountPlaceholder": "Swap-Menge eingeben",
-    "estimatedOut": "Voraussichtlicher Erhalt: {amount} {symbol}",
+    "estimatedOut": "Geschätzter Erhalt: {amount} {symbol}",
     "submit": "Swap ausführen"
   },
   "WalletCard": {
@@ -61,7 +61,31 @@
       "removeLiquidityFailed": "Entfernen der Liquidität fehlgeschlagen: {message}",
       "swapSuccess": "Swap erfolgreich ausgeführt",
       "swapFailed": "Swap fehlgeschlagen: {message}",
-      "sameTokenError": "Eingabe-Token und Ausgabe-Token dürfen nicht identisch sein"
+      "sameTokenError": "Eingabe-Token und Ausgabe-Token dürfen nicht identisch sein",
+      "mintTestTokensSuccess": "Test-Token wurden erfolgreich hinzugefügt",
+      "mintTestTokensFailed": "Test-Token konnten nicht hinzugefügt werden: {message}",
+      "claimFaucetSuccess": "Faucet-Token erfolgreich beansprucht",
+      "claimFaucetFailed": "Faucet-Token konnten nicht beansprucht werden: {message}"
     }
+  },
+  "InsufficientBalanceDialog": {
+    "title": "Unzureichendes Guthaben",
+    "description": "Dein {symbol}-Guthaben reicht für diese Aktion nicht aus. Du kannst weitere lokale Test-Token hinzufügen.",
+    "cancel": "Abbrechen",
+    "mint": "Test-Token hinzufügen"
+  },
+  "FaucetDialog": {
+    "title": "Test-Token anfordern",
+    "description": "Dein Guthaben ist unzureichend. Wähle einen Token und gib an, wie viel du aus dem Faucet beziehen möchtest.",
+    "tokenLabel": "Token",
+    "amountLabel": "Menge",
+    "amountPlaceholder": "{symbol} Menge eingeben",
+    "cancel": "Abbrechen",
+    "claim": "Aus Faucet beanspruchen",
+    "loading": "Wird verarbeitet..."
+  },
+  "LoadingOverlay": {
+    "title": "Transaktion wird verarbeitet",
+    "description": "Bitte warten Sie, während wir Ihr Wallet verbinden, eine Signatur anfordern oder die Transaktion on-chain bestätigen."
   }
 }

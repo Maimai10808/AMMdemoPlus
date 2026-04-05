@@ -51,7 +51,7 @@
     "statusLabel": "स्थिति",
     "statusValues": {
       "walletNotConnected": "वॉलेट कनेक्ट नहीं है",
-      "connectingWallet": "नेटवर्क स्विच किया जा रहा है और वॉलेट कनेक्ट किया जा रहा है...",
+      "connectingWallet": "नेटवर्क बदला जा रहा है और वॉलेट कनेक्ट किया जा रहा है...",
       "walletConnected": "वॉलेट कनेक्ट हो गया: {account}",
       "connectFailed": "कनेक्शन विफल: {message}",
       "refreshFailed": "डेटा रिफ्रेश विफल: {message}",
@@ -61,7 +61,31 @@
       "removeLiquidityFailed": "लिक्विडिटी हटाना विफल: {message}",
       "swapSuccess": "स्वैप सफल रहा",
       "swapFailed": "स्वैप विफल: {message}",
-      "sameTokenError": "इनपुट टोकन और आउटपुट टोकन एक जैसे नहीं हो सकते"
+      "sameTokenError": "इनपुट टोकन और आउटपुट टोकन एक जैसे नहीं हो सकते",
+      "mintTestTokensSuccess": "टेस्ट टोकन सफलतापूर्वक जोड़े गए",
+      "mintTestTokensFailed": "टेस्ट टोकन जोड़ना विफल रहा: {message}",
+      "claimFaucetSuccess": "फॉसेट टोकन सफलतापूर्वक प्राप्त हुए",
+      "claimFaucetFailed": "फॉसेट टोकन प्राप्त करना विफल रहा: {message}"
     }
+  },
+  "InsufficientBalanceDialog": {
+    "title": "बैलेंस अपर्याप्त है",
+    "description": "इस कार्रवाई के लिए आपका {symbol} बैलेंस पर्याप्त नहीं है। आप और लोकल टेस्ट टोकन जोड़ सकते हैं।",
+    "cancel": "रद्द करें",
+    "mint": "टेस्ट टोकन जोड़ें"
+  },
+  "FaucetDialog": {
+    "title": "टेस्ट टोकन प्राप्त करें",
+    "description": "आपका बैलेंस पर्याप्त नहीं है। एक टोकन चुनें और बताएं कि आप फॉसेट से कितनी मात्रा प्राप्त करना चाहते हैं।",
+    "tokenLabel": "टोकन",
+    "amountLabel": "राशि",
+    "amountPlaceholder": "{symbol} राशि दर्ज करें",
+    "cancel": "रद्द करें",
+    "claim": "फॉसेट से प्राप्त करें",
+    "loading": "प्रोसेस हो रहा है..."
+  },
+  "LoadingOverlay": {
+    "title": "लेनदेन प्रोसेस हो रहा है",
+    "description": "कृपया प्रतीक्षा करें, सिस्टम आपके वॉलेट से कनेक्ट कर रहा है, सिग्नेचर मांग रहा है, या ऑन-चेन ट्रांज़ैक्शन कन्फर्म कर रहा है।"
   }
 }

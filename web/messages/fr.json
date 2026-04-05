@@ -1,7 +1,7 @@
 {
   "HomePage": {
     "title": "Démo DEX Multi-Token Pool",
-    "subtitle": "Une démo AMM multi-token avec connexion de portefeuille, gestion de liquidité et swap."
+    "subtitle": "Une démo AMM multi-token avec connexion de portefeuille, gestion de liquidité et swaps."
   },
   "LocaleSwitcher": {
     "label": "Langue",
@@ -37,7 +37,7 @@
     "tokenIn": "Jeton d’entrée",
     "tokenOut": "Jeton de sortie",
     "amountIn": "Montant d’entrée",
-    "amountPlaceholder": "Entrez le montant à échanger",
+    "amountPlaceholder": "Entrez le montant du swap",
     "estimatedOut": "Montant estimé reçu : {amount} {symbol}",
     "submit": "Exécuter le swap"
   },
@@ -61,7 +61,31 @@
       "removeLiquidityFailed": "Échec du retrait de liquidité : {message}",
       "swapSuccess": "Swap effectué avec succès",
       "swapFailed": "Échec du swap : {message}",
-      "sameTokenError": "Le token d’entrée et le token de sortie ne peuvent pas être identiques"
+      "sameTokenError": "Le token d’entrée et le token de sortie ne peuvent pas être identiques",
+      "mintTestTokensSuccess": "Les jetons de test ont été ajoutés avec succès",
+      "mintTestTokensFailed": "Échec de l’ajout des jetons de test : {message}",
+      "claimFaucetSuccess": "Jetons du faucet récupérés avec succès",
+      "claimFaucetFailed": "Échec de la récupération des jetons du faucet : {message}"
     }
+  },
+  "InsufficientBalanceDialog": {
+    "title": "Solde insuffisant",
+    "description": "Votre solde de {symbol} n’est pas suffisant pour cette action. Vous pouvez ajouter plus de jetons de test locaux.",
+    "cancel": "Annuler",
+    "mint": "Ajouter des jetons de test"
+  },
+  "FaucetDialog": {
+    "title": "Demander des jetons de test",
+    "description": "Votre solde est insuffisant. Sélectionnez un jeton et choisissez la quantité que vous souhaitez réclamer depuis le faucet.",
+    "tokenLabel": "Jeton",
+    "amountLabel": "Montant",
+    "amountPlaceholder": "Entrez le montant de {symbol}",
+    "cancel": "Annuler",
+    "claim": "Réclamer depuis le faucet",
+    "loading": "Traitement en cours..."
+  },
+  "LoadingOverlay": {
+    "title": "Traitement de la transaction",
+    "description": "Veuillez patienter pendant la connexion au portefeuille, la demande de signature ou la confirmation de la transaction sur la blockchain."
   }
 }

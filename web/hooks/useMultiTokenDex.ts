@@ -1,16 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/**
- * 多币池 DEX 主业务 Hook
- *
- * 作用：
- * 1. 管理钱包、池子、token、LP、swap 等前端状态
- * 2. 串联钱包连接、链上读取、交易动作、报价估算等模块
- * 3. 对页面组件暴露统一的可调用接口
- *
- * 这是前端业务层总入口，底层能力由 lib/web3 下的工具模块提供。
- */
-
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -23,6 +12,8 @@ import {
   addLiquidityAction,
   removeLiquidityAction,
   swapAction,
+  claimFaucetTokensAction,
+  DexActionError,
 } from "@/lib/web3/actions";
 
 declare global {
@@ -43,7 +34,9 @@ type StatusKey =
   | "removeLiquidityFailed"
   | "swapSuccess"
   | "swapFailed"
-  | "sameTokenError";
+  | "sameTokenError"
+  | "claimFaucetSuccess"
+  | "claimFaucetFailed";
 
 type StatusParams = {
   account?: string;
@@ -75,6 +68,12 @@ export function useMultiTokenDex() {
   const [swapTokenOut, setSwapTokenOut] = useState("");
   const [swapAmountIn, setSwapAmountIn] = useState("");
   const [swapEstimatedOut, setSwapEstimatedOut] = useState("0");
+
+  const [insufficientBalanceOpen, setInsufficientBalanceOpen] = useState(false);
+  const [insufficientTokenSymbol, setInsufficientTokenSymbol] = useState("");
+
+  const [faucetTokenAddress, setFaucetTokenAddress] = useState("");
+  const [faucetAmount, setFaucetAmount] = useState("");
 
   const tokenInInfo = useMemo(
     () => tokens.find((t) => t.address === swapTokenIn),
@@ -133,6 +132,11 @@ export function useMultiTokenDex() {
         if (!swapTokenIn) setSwapTokenIn(snapshot.tokens[0].address);
         if (!swapTokenOut) setSwapTokenOut(snapshot.tokens[1].address);
       }
+
+      if (snapshot.tokens.length >= 1) {
+        if (!faucetTokenAddress)
+          setFaucetTokenAddress(snapshot.tokens[0].address);
+      }
     } catch (error: any) {
       console.error(error);
       setStatusKey("refreshFailed");
@@ -162,9 +166,18 @@ export function useMultiTokenDex() {
       await refreshAll();
     } catch (error: any) {
       console.error(error);
+
+      if (
+        error instanceof DexActionError &&
+        error.code === "INSUFFICIENT_BALANCE"
+      ) {
+        setInsufficientTokenSymbol(error.tokenSymbol || "");
+        setInsufficientBalanceOpen(true);
+      }
+
       setStatusKey("addLiquidityFailed");
       setStatusParams({
-        message: error?.shortMessage || error?.message || "Unknown error",
+        message: error?.message || "Unknown error",
       });
     } finally {
       setLoading(false);
@@ -192,9 +205,18 @@ export function useMultiTokenDex() {
       await refreshAll();
     } catch (error: any) {
       console.error(error);
+
+      if (
+        error instanceof DexActionError &&
+        error.code === "INSUFFICIENT_BALANCE"
+      ) {
+        setInsufficientTokenSymbol(error.tokenSymbol || "");
+        setInsufficientBalanceOpen(true);
+      }
+
       setStatusKey("removeLiquidityFailed");
       setStatusParams({
-        message: error?.shortMessage || error?.message || "Unknown error",
+        message: error?.message || "Unknown error",
       });
     } finally {
       setLoading(false);
@@ -229,9 +251,58 @@ export function useMultiTokenDex() {
       await refreshAll();
     } catch (error: any) {
       console.error(error);
+
+      if (
+        error instanceof DexActionError &&
+        error.code === "INSUFFICIENT_BALANCE"
+      ) {
+        setInsufficientTokenSymbol(error.tokenSymbol || "");
+        setInsufficientBalanceOpen(true);
+      }
+
       setStatusKey("swapFailed");
       setStatusParams({
-        message: error?.shortMessage || error?.message || "Unknown error",
+        message: error?.message || "Unknown error",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function claimFaucetTokens() {
+    if (!signer || !account || tokens.length === 0) return;
+
+    try {
+      setLoading(true);
+
+      const selectedToken = tokens.find(
+        (token) => token.address === faucetTokenAddress,
+      );
+
+      if (!selectedToken) {
+        throw new DexActionError(
+          "INVALID_TOKEN",
+          "Invalid selected faucet token",
+        );
+      }
+
+      await claimFaucetTokensAction({
+        signer,
+        tokenAddress: selectedToken.address,
+        amount: faucetAmount,
+        decimals: selectedToken.decimals,
+      });
+
+      setInsufficientBalanceOpen(false);
+      setFaucetAmount("");
+      setStatusKey("claimFaucetSuccess");
+      setStatusParams({});
+      await refreshAll();
+    } catch (error: any) {
+      console.error(error);
+      setStatusKey("claimFaucetFailed");
+      setStatusParams({
+        message: error?.message || "Unknown error",
       });
     } finally {
       setLoading(false);
@@ -293,9 +364,19 @@ export function useMultiTokenDex() {
     setSwapAmountIn,
     swapEstimatedOut,
 
+    insufficientBalanceOpen,
+    insufficientTokenSymbol,
+    setInsufficientBalanceOpen,
+
+    faucetTokenAddress,
+    setFaucetTokenAddress,
+    faucetAmount,
+    setFaucetAmount,
+
     connectWallet,
     addLiquidity,
     removeLiquidity,
     swap,
+    claimFaucetTokens,
   };
 }

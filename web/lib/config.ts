@@ -1,15 +1,19 @@
 type Address = `0x${string}`;
 
-function requireAddress(value: string | undefined, name: string): Address {
+function requireValue(value: string | undefined, name: string): string {
   if (!value) {
     throw new Error(`Missing environment variable: ${name}`);
   }
 
-  return value as Address;
+  return value;
+}
+
+function requireAddress(value: string | undefined, name: string): Address {
+  return requireValue(value, name) as Address;
 }
 
 export const TARGET_CHAIN_ID = Number(
-  process.env.NEXT_PUBLIC_CHAIN_ID ?? "31337",
+  requireValue(process.env.NEXT_PUBLIC_CHAIN_ID, "NEXT_PUBLIC_CHAIN_ID"),
 );
 
 export const FACTORY_ADDRESS = requireAddress(
@@ -25,6 +29,11 @@ export const POOL_ADDRESS = requireAddress(
 export const ROUTER_ADDRESS = requireAddress(
   process.env.NEXT_PUBLIC_ROUTER_ADDRESS,
   "NEXT_PUBLIC_ROUTER_ADDRESS",
+);
+
+export const FAUCET_ADDRESS = requireAddress(
+  process.env.NEXT_PUBLIC_FAUCET_ADDRESS,
+  "NEXT_PUBLIC_FAUCET_ADDRESS",
 );
 
 export const TOKEN_A_ADDRESS = requireAddress(

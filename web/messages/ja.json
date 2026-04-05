@@ -37,9 +37,9 @@
     "tokenIn": "入力トークン",
     "tokenOut": "出力トークン",
     "amountIn": "入力数量",
-    "amountPlaceholder": "交換数量を入力",
-    "estimatedOut": "予想受取額: {amount} {symbol}",
-    "submit": "スワップを実行"
+    "amountPlaceholder": "スワップ数量を入力",
+    "estimatedOut": "推定受取額: {amount} {symbol}",
+    "submit": "スワップ実行"
   },
   "WalletCard": {
     "title": "ウォレット",
@@ -61,7 +61,31 @@
       "removeLiquidityFailed": "流動性の削除に失敗しました: {message}",
       "swapSuccess": "スワップに成功しました",
       "swapFailed": "スワップに失敗しました: {message}",
-      "sameTokenError": "入力トークンと出力トークンは同じにできません"
+      "sameTokenError": "入力トークンと出力トークンは同じにできません",
+      "mintTestTokensSuccess": "テストトークンの補充に成功しました",
+      "mintTestTokensFailed": "テストトークンの補充に失敗しました: {message}",
+      "claimFaucetSuccess": "Faucet からの受け取りに成功しました",
+      "claimFaucetFailed": "Faucet からの受け取りに失敗しました: {message}"
     }
+  },
+  "InsufficientBalanceDialog": {
+    "title": "残高不足",
+    "description": "この操作を行うには {symbol} の残高が不足しています。ローカルのテストトークンを追加できます。",
+    "cancel": "キャンセル",
+    "mint": "テストトークンを追加"
+  },
+  "FaucetDialog": {
+    "title": "テストトークンを受け取る",
+    "description": "残高が不足しています。受け取りたいトークンと数量を選択してください。",
+    "tokenLabel": "トークン",
+    "amountLabel": "数量",
+    "amountPlaceholder": "{symbol} 数量を入力",
+    "cancel": "キャンセル",
+    "claim": "Faucet から受け取る",
+    "loading": "処理中..."
+  },
+  "LoadingOverlay": {
+    "title": "取引を処理中です",
+    "description": "ウォレット接続、署名要求、またはチェーン上の確認が完了するまでしばらくお待ちください。"
   }
 }

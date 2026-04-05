@@ -61,7 +61,31 @@
       "removeLiquidityFailed": "移除流动性失败: {message}",
       "swapSuccess": "兑换成功",
       "swapFailed": "兑换失败: {message}",
-      "sameTokenError": "输入 Token 和输出 Token 不能相同"
+      "sameTokenError": "输入 Token 和输出 Token 不能相同",
+      "mintTestTokensSuccess": "测试代币补充成功",
+      "mintTestTokensFailed": "补充测试代币失败: {message}",
+      "claimFaucetSuccess": "水龙头测试币领取成功",
+      "claimFaucetFailed": "领取水龙头测试币失败: {message}"
     }
+  },
+  "InsufficientBalanceDialog": {
+    "title": "余额不足",
+    "description": "你当前的 {symbol} 余额不足，无法完成这次操作。你可以补充更多本地测试代币。",
+    "cancel": "取消",
+    "mint": "补充测试代币"
+  },
+  "FaucetDialog": {
+    "title": "领取测试代币",
+    "description": "你的余额不足。请选择想领取的币种，并填写要从水龙头领取的数量。",
+    "tokenLabel": "币种",
+    "amountLabel": "数量",
+    "amountPlaceholder": "输入 {symbol} 数量",
+    "cancel": "取消",
+    "claim": "从水龙头领取"
+  },
+  "FaucetDialog.loading": "Processing...",
+  "LoadingOverlay": {
+    "title": "正在处理交易",
+    "description": "请稍候，系统正在连接钱包、请求签名，或等待链上确认。"
   }
 }
