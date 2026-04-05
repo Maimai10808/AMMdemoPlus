@@ -1,0 +1,67 @@
+{
+  "HomePage": {
+    "title": "Multi-Token-Pool DEX Demo",
+    "subtitle": "Eine Multi-Token-AMM-Demo mit Wallet-Verbindung, Liquiditätsverwaltung und Swaps."
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache",
+    "placeholder": "Sprache auswählen"
+  },
+  "AddLiquidityCard": {
+    "title": "Liquidität hinzufügen",
+    "amountLabel": "{symbol} Menge",
+    "amountPlaceholder": "{symbol} Menge eingeben",
+    "submit": "Liquidität hinzufügen"
+  },
+  "PoolCard": {
+    "myAssets": "Meine Assets",
+    "lpToken": "LP-Token",
+    "poolReserves": "Pool-Reserven"
+  },
+  "PoolOverviewCard": {
+    "title": "Pool-Übersicht",
+    "token": "Token",
+    "myBalance": "Mein Guthaben",
+    "poolBalance": "Pool-Guthaben",
+    "weight": "Gewichtung",
+    "lpBalance": "LP-Token-Guthaben: {balance}"
+  },
+  "RemoveLiquidityCard": {
+    "title": "Liquidität entfernen",
+    "lpAmountLabel": "LP-Token-Menge",
+    "lpAmountPlaceholder": "LP-Token-Menge eingeben",
+    "submit": "Liquidität entfernen"
+  },
+  "SwapCard": {
+    "title": "Swap",
+    "tokenIn": "Eingabe-Token",
+    "tokenOut": "Ausgabe-Token",
+    "amountIn": "Eingabemenge",
+    "amountPlaceholder": "Swap-Menge eingeben",
+    "estimatedOut": "Voraussichtlicher Erhalt: {amount} {symbol}",
+    "submit": "Swap ausführen"
+  },
+  "WalletCard": {
+    "title": "Wallet",
+    "connected": "Verbunden: {account}",
+    "notConnected": "Nicht verbunden",
+    "nativeBalance": "Natives ETH: {balance}",
+    "connect": "Wallet verbinden",
+    "reconnect": "Erneut verbinden",
+    "statusLabel": "Status",
+    "statusValues": {
+      "walletNotConnected": "Wallet nicht verbunden",
+      "connectingWallet": "Netzwerk wird gewechselt und Wallet wird verbunden...",
+      "walletConnected": "Wallet verbunden: {account}",
+      "connectFailed": "Verbindung fehlgeschlagen: {message}",
+      "refreshFailed": "Daten konnten nicht aktualisiert werden: {message}",
+      "addLiquiditySuccess": "Liquidität erfolgreich hinzugefügt",
+      "addLiquidityFailed": "Hinzufügen der Liquidität fehlgeschlagen: {message}",
+      "removeLiquiditySuccess": "Liquidität erfolgreich entfernt",
+      "removeLiquidityFailed": "Entfernen der Liquidität fehlgeschlagen: {message}",
+      "swapSuccess": "Swap erfolgreich ausgeführt",
+      "swapFailed": "Swap fehlgeschlagen: {message}",
+      "sameTokenError": "Eingabe-Token und Ausgabe-Token dürfen nicht identisch sein"
+    }
+  }
+}

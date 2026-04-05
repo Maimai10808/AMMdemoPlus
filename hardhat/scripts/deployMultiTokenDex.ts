@@ -3,6 +3,35 @@ import { parseEther } from "viem";
 import fs from "node:fs";
 import path from "node:path";
 
+function upsertEnvFile(filePath: string, values: Record<string, string>): void {
+  const existing = fs.existsSync(filePath)
+    ? fs.readFileSync(filePath, "utf8")
+    : "";
+
+  const lines = existing.split("\n").filter((line) => line.trim() !== "");
+
+  const map = new Map<string, string>();
+
+  for (const line of lines) {
+    const eqIndex = line.indexOf("=");
+    if (eqIndex === -1) continue;
+
+    const key = line.slice(0, eqIndex).trim();
+    const value = line.slice(eqIndex + 1).trim();
+    map.set(key, value);
+  }
+
+  for (const [key, value] of Object.entries(values)) {
+    map.set(key, value);
+  }
+
+  const nextContent = Array.from(map.entries())
+    .map(([key, value]) => `${key}=${value}`)
+    .join("\n");
+
+  fs.writeFileSync(filePath, `${nextContent}\n`, "utf8");
+}
+
 async function main() {
   const { viem } = await hre.network.connect();
   const publicClient = await viem.getPublicClient();
@@ -97,9 +126,11 @@ async function main() {
     ]),
   });
 
+  const chainId = Number(await publicClient.getChainId());
+
   const deployment = {
     network: "localhost",
-    chainId: Number(await publicClient.getChainId()),
+    chainId,
     deployer: walletClient.account.address,
     tokens: {
       tokenA: {
@@ -150,15 +181,33 @@ async function main() {
     createdAt: new Date().toISOString(),
   };
 
-  const outputDir = path.join(process.cwd(), "deployments");
-  const outputFile = path.join(outputDir, "localhost.json");
+  const deploymentsDir = path.join(process.cwd(), "deployments");
+  const deploymentFile = path.join(deploymentsDir, "localhost.json");
 
-  fs.mkdirSync(outputDir, { recursive: true });
-  fs.writeFileSync(outputFile, JSON.stringify(deployment, null, 2), "utf8");
+  fs.mkdirSync(deploymentsDir, { recursive: true });
+  fs.writeFileSync(deploymentFile, JSON.stringify(deployment, null, 2), "utf8");
 
-  console.log(`deployment file saved to: ${outputFile}`);
+  console.log(`deployment file saved to: ${deploymentFile}`);
+
+  const webDir = path.resolve(process.cwd(), "../web");
+  const webEnvFile = path.join(webDir, ".env.local");
+
+  fs.mkdirSync(webDir, { recursive: true });
+
+  upsertEnvFile(webEnvFile, {
+    NEXT_PUBLIC_CHAIN_ID: String(chainId),
+    NEXT_PUBLIC_POOL_ADDRESS: poolAddress,
+    NEXT_PUBLIC_ROUTER_ADDRESS: router.address,
+    NEXT_PUBLIC_FACTORY_ADDRESS: factory.address,
+    NEXT_PUBLIC_TOKEN_A_ADDRESS: tokenA.address,
+    NEXT_PUBLIC_TOKEN_B_ADDRESS: tokenB.address,
+    NEXT_PUBLIC_TOKEN_C_ADDRESS: tokenC.address,
+    NEXT_PUBLIC_TOKEN_D_ADDRESS: tokenD.address,
+    NEXT_PUBLIC_TOKEN_E_ADDRESS: tokenE.address,
+  });
+
+  console.log(`frontend env file updated: ${webEnvFile}`);
 }
-
 main().catch((e) => {
   console.error(e);
   process.exit(1);

@@ -1,0 +1,67 @@
+{
+  "HomePage": {
+    "title": "मल्टी टोकन पूल DEX डेमो",
+    "subtitle": "वॉलेट कनेक्शन, लिक्विडिटी मैनेजमेंट और स्वैप के साथ एक मल्टी-टोकन AMM डेमो।"
+  },
+  "LocaleSwitcher": {
+    "label": "भाषा",
+    "placeholder": "भाषा चुनें"
+  },
+  "AddLiquidityCard": {
+    "title": "लिक्विडिटी जोड़ें",
+    "amountLabel": "{symbol} राशि",
+    "amountPlaceholder": "{symbol} राशि दर्ज करें",
+    "submit": "लिक्विडिटी जोड़ें"
+  },
+  "PoolCard": {
+    "myAssets": "मेरी संपत्तियाँ",
+    "lpToken": "LP टोकन",
+    "poolReserves": "पूल रिज़र्व"
+  },
+  "PoolOverviewCard": {
+    "title": "पूल अवलोकन",
+    "token": "टोकन",
+    "myBalance": "मेरा बैलेंस",
+    "poolBalance": "पूल बैलेंस",
+    "weight": "वेट",
+    "lpBalance": "LP टोकन बैलेंस: {balance}"
+  },
+  "RemoveLiquidityCard": {
+    "title": "लिक्विडिटी हटाएँ",
+    "lpAmountLabel": "LP टोकन राशि",
+    "lpAmountPlaceholder": "LP टोकन राशि दर्ज करें",
+    "submit": "लिक्विडिटी हटाएँ"
+  },
+  "SwapCard": {
+    "title": "स्वैप",
+    "tokenIn": "इनपुट टोकन",
+    "tokenOut": "आउटपुट टोकन",
+    "amountIn": "इनपुट राशि",
+    "amountPlaceholder": "स्वैप राशि दर्ज करें",
+    "estimatedOut": "अनुमानित प्राप्ति: {amount} {symbol}",
+    "submit": "स्वैप करें"
+  },
+  "WalletCard": {
+    "title": "वॉलेट",
+    "connected": "कनेक्टेड: {account}",
+    "notConnected": "कनेक्ट नहीं है",
+    "nativeBalance": "नेटिव ETH: {balance}",
+    "connect": "वॉलेट कनेक्ट करें",
+    "reconnect": "फिर से कनेक्ट करें",
+    "statusLabel": "स्थिति",
+    "statusValues": {
+      "walletNotConnected": "वॉलेट कनेक्ट नहीं है",
+      "connectingWallet": "नेटवर्क स्विच किया जा रहा है और वॉलेट कनेक्ट किया जा रहा है...",
+      "walletConnected": "वॉलेट कनेक्ट हो गया: {account}",
+      "connectFailed": "कनेक्शन विफल: {message}",
+      "refreshFailed": "डेटा रिफ्रेश विफल: {message}",
+      "addLiquiditySuccess": "लिक्विडिटी सफलतापूर्वक जोड़ी गई",
+      "addLiquidityFailed": "लिक्विडिटी जोड़ना विफल: {message}",
+      "removeLiquiditySuccess": "लिक्विडिटी सफलतापूर्वक हटाई गई",
+      "removeLiquidityFailed": "लिक्विडिटी हटाना विफल: {message}",
+      "swapSuccess": "स्वैप सफल रहा",
+      "swapFailed": "स्वैप विफल: {message}",
+      "sameTokenError": "इनपुट टोकन और आउटपुट टोकन एक जैसे नहीं हो सकते"
+    }
+  }
+}

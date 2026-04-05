@@ -1,0 +1,67 @@
+{
+  "HomePage": {
+    "title": "マルチトークンプール DEX デモ",
+    "subtitle": "ウォレット接続、流動性管理、スワップに対応したマルチトークン AMM デモです。"
+  },
+  "LocaleSwitcher": {
+    "label": "言語",
+    "placeholder": "言語を選択"
+  },
+  "AddLiquidityCard": {
+    "title": "流動性を追加",
+    "amountLabel": "{symbol} 数量",
+    "amountPlaceholder": "{symbol} の数量を入力",
+    "submit": "流動性を追加"
+  },
+  "PoolCard": {
+    "myAssets": "保有資産",
+    "lpToken": "LP トークン",
+    "poolReserves": "プール残高"
+  },
+  "PoolOverviewCard": {
+    "title": "プール概要",
+    "token": "トークン",
+    "myBalance": "自分の残高",
+    "poolBalance": "プール残高",
+    "weight": "比率",
+    "lpBalance": "LP トークン残高: {balance}"
+  },
+  "RemoveLiquidityCard": {
+    "title": "流動性を削除",
+    "lpAmountLabel": "LP トークン数量",
+    "lpAmountPlaceholder": "LP トークン数量を入力",
+    "submit": "流動性を削除"
+  },
+  "SwapCard": {
+    "title": "スワップ",
+    "tokenIn": "入力トークン",
+    "tokenOut": "出力トークン",
+    "amountIn": "入力数量",
+    "amountPlaceholder": "交換数量を入力",
+    "estimatedOut": "予想受取額: {amount} {symbol}",
+    "submit": "スワップを実行"
+  },
+  "WalletCard": {
+    "title": "ウォレット",
+    "connected": "接続済み: {account}",
+    "notConnected": "未接続",
+    "nativeBalance": "ネイティブ ETH: {balance}",
+    "connect": "ウォレット接続",
+    "reconnect": "再接続",
+    "statusLabel": "状態",
+    "statusValues": {
+      "walletNotConnected": "ウォレットが接続されていません",
+      "connectingWallet": "ネットワークを切り替えてウォレットに接続中...",
+      "walletConnected": "ウォレット接続済み: {account}",
+      "connectFailed": "接続に失敗しました: {message}",
+      "refreshFailed": "データの更新に失敗しました: {message}",
+      "addLiquiditySuccess": "流動性の追加に成功しました",
+      "addLiquidityFailed": "流動性の追加に失敗しました: {message}",
+      "removeLiquiditySuccess": "流動性の削除に成功しました",
+      "removeLiquidityFailed": "流動性の削除に失敗しました: {message}",
+      "swapSuccess": "スワップに成功しました",
+      "swapFailed": "スワップに失敗しました: {message}",
+      "sameTokenError": "入力トークンと出力トークンは同じにできません"
+    }
+  }
+}

@@ -6,44 +6,44 @@
     "tokenA": {
       "name": "Demo ETH",
       "symbol": "dETH",
-      "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      "address": "0xf953b3a269d80e3eb0f2947630da976b896a8c5b",
       "decimals": 18
     },
     "tokenB": {
       "name": "Demo USD",
       "symbol": "dUSD",
-      "address": "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      "address": "0xaa292e8611adf267e563f334ee42320ac96d0463",
       "decimals": 18
     },
     "tokenC": {
       "name": "Demo BTC",
       "symbol": "dBTC",
-      "address": "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
+      "address": "0x5c74c94173f05da1720953407cbb920f3df9f887",
       "decimals": 18
     },
     "tokenD": {
       "name": "Demo XRP",
       "symbol": "dXRP",
-      "address": "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
+      "address": "0x720472c8ce72c2a2d711333e064abd3e6bbeadd3",
       "decimals": 18
     },
     "tokenE": {
       "name": "Demo DOGE",
       "symbol": "dDOGE",
-      "address": "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
+      "address": "0xe8d2a1e88c91dcd5433208d4152cc4f399a7e91d",
       "decimals": 18
     }
   },
-  "factory": "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707",
-  "router": "0x0165878a594ca255338adfa4d48449f69242eb8f",
-  "pool": "0x61c36a8d610163660E21a8b7359e1Cac0C9133e1",
+  "factory": "0x5067457698fd6fa1c6964e416b3f42713513b3dd",
+  "router": "0x18e317a7d70d8fbf8e6e893616b52390ebbdb629",
+  "pool": "0x3F9E4f8f9B0C32B9EA1BA0F426B366bF064AEE5d",
   "poolConfig": {
     "tokens": [
-      "0x5fbdb2315678afecb367f032d93f642f64180aa3",
-      "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
-      "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
-      "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
-      "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9"
+      "0xf953b3a269d80e3eb0f2947630da976b896a8c5b",
+      "0xaa292e8611adf267e563f334ee42320ac96d0463",
+      "0x5c74c94173f05da1720953407cbb920f3df9f887",
+      "0x720472c8ce72c2a2d711333e064abd3e6bbeadd3",
+      "0xe8d2a1e88c91dcd5433208d4152cc4f399a7e91d"
     ],
     "weights": [
       "5000",
@@ -60,5 +60,5 @@
     "dXRP": "10000000000000000000000",
     "dDOGE": "10000000000000000000000"
   },
-  "createdAt": "2026-03-31T13:36:25.263Z"
+  "createdAt": "2026-04-05T06:19:30.938Z"
 }

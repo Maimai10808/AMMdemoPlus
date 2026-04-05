@@ -5,26 +5,32 @@ import PoolOverviewCard from "@/components/PoolOverviewCard";
 import AddLiquidityCard from "@/components/AddLiquidityCard";
 import RemoveLiquidityCard from "@/components/RemoveLiquidityCard";
 import SwapCard from "@/components/SwapCard";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { useMultiTokenDex } from "@/hooks/useMultiTokenDex";
+import { useTranslations } from "next-intl";
 
 export default function Page() {
   const dex = useMultiTokenDex();
+  const t = useTranslations("HomePage");
 
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-10 text-white">
       <div className="mx-auto max-w-7xl space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold">Multi Token Pool DEX Demo</h1>
-          <p className="mt-2 text-slate-400">
-            五币多池版 · Next.js + ethers v6 + Hardhat
-          </p>
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h1 className="text-3xl font-bold">{t("title")}</h1>
+            <p className="mt-2 text-sm text-slate-400">{t("subtitle")}</p>
+          </div>
+
+          <LocaleSwitcher />
         </div>
 
         <WalletCard
           account={dex.account}
           nativeBalance={dex.nativeBalance}
           loading={dex.loading}
-          status={dex.status}
+          statusKey={dex.statusKey}
+          statusParams={dex.statusParams}
           connectWallet={dex.connectWallet}
         />
 

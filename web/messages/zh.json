@@ -1,0 +1,67 @@
+{
+  "HomePage": {
+    "title": "多代币池 DEX 演示",
+    "subtitle": "一个支持钱包连接、流动性管理和代币兑换的多代币 AMM 演示项目。"
+  },
+  "LocaleSwitcher": {
+    "label": "语言",
+    "placeholder": "选择语言"
+  },
+  "AddLiquidityCard": {
+    "title": "添加流动性",
+    "amountLabel": "{symbol} 数量",
+    "amountPlaceholder": "输入 {symbol} 数量",
+    "submit": "添加流动性"
+  },
+  "PoolCard": {
+    "myAssets": "我的资产",
+    "lpToken": "LP Token",
+    "poolReserves": "池子储备"
+  },
+  "PoolOverviewCard": {
+    "title": "池子总览",
+    "token": "Token",
+    "myBalance": "我的余额",
+    "poolBalance": "池子余额",
+    "weight": "权重",
+    "lpBalance": "LP Token 余额：{balance}"
+  },
+  "RemoveLiquidityCard": {
+    "title": "移除流动性",
+    "lpAmountLabel": "LP Token 数量",
+    "lpAmountPlaceholder": "输入 LP Token 数量",
+    "submit": "移除流动性"
+  },
+  "SwapCard": {
+    "title": "兑换",
+    "tokenIn": "输入 Token",
+    "tokenOut": "输出 Token",
+    "amountIn": "输入数量",
+    "amountPlaceholder": "输入兑换数量",
+    "estimatedOut": "预计得到：{amount} {symbol}",
+    "submit": "执行兑换"
+  },
+  "WalletCard": {
+    "title": "钱包",
+    "connected": "已连接: {account}",
+    "notConnected": "未连接",
+    "nativeBalance": "原生 ETH: {balance}",
+    "connect": "连接钱包",
+    "reconnect": "重新连接",
+    "statusLabel": "状态",
+    "statusValues": {
+      "walletNotConnected": "未连接钱包",
+      "connectingWallet": "正在切换网络并连接钱包...",
+      "walletConnected": "钱包已连接: {account}",
+      "connectFailed": "连接失败: {message}",
+      "refreshFailed": "刷新数据失败: {message}",
+      "addLiquiditySuccess": "添加流动性成功",
+      "addLiquidityFailed": "添加流动性失败: {message}",
+      "removeLiquiditySuccess": "移除流动性成功",
+      "removeLiquidityFailed": "移除流动性失败: {message}",
+      "swapSuccess": "兑换成功",
+      "swapFailed": "兑换失败: {message}",
+      "sameTokenError": "输入 Token 和输出 Token 不能相同"
+    }
+  }
+}

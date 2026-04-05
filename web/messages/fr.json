@@ -1,0 +1,67 @@
+{
+  "HomePage": {
+    "title": "Démo DEX Multi-Token Pool",
+    "subtitle": "Une démo AMM multi-token avec connexion de portefeuille, gestion de liquidité et swap."
+  },
+  "LocaleSwitcher": {
+    "label": "Langue",
+    "placeholder": "Choisir une langue"
+  },
+  "AddLiquidityCard": {
+    "title": "Ajouter de la liquidité",
+    "amountLabel": "Montant de {symbol}",
+    "amountPlaceholder": "Entrez le montant de {symbol}",
+    "submit": "Ajouter de la liquidité"
+  },
+  "PoolCard": {
+    "myAssets": "Mes actifs",
+    "lpToken": "Jeton LP",
+    "poolReserves": "Réserves du pool"
+  },
+  "PoolOverviewCard": {
+    "title": "Vue d’ensemble du pool",
+    "token": "Jeton",
+    "myBalance": "Mon solde",
+    "poolBalance": "Solde du pool",
+    "weight": "Poids",
+    "lpBalance": "Solde du jeton LP : {balance}"
+  },
+  "RemoveLiquidityCard": {
+    "title": "Retirer de la liquidité",
+    "lpAmountLabel": "Montant du jeton LP",
+    "lpAmountPlaceholder": "Entrez le montant du jeton LP",
+    "submit": "Retirer de la liquidité"
+  },
+  "SwapCard": {
+    "title": "Swap",
+    "tokenIn": "Jeton d’entrée",
+    "tokenOut": "Jeton de sortie",
+    "amountIn": "Montant d’entrée",
+    "amountPlaceholder": "Entrez le montant à échanger",
+    "estimatedOut": "Montant estimé reçu : {amount} {symbol}",
+    "submit": "Exécuter le swap"
+  },
+  "WalletCard": {
+    "title": "Portefeuille",
+    "connected": "Connecté : {account}",
+    "notConnected": "Non connecté",
+    "nativeBalance": "ETH natif : {balance}",
+    "connect": "Connecter le portefeuille",
+    "reconnect": "Reconnecter",
+    "statusLabel": "Statut",
+    "statusValues": {
+      "walletNotConnected": "Portefeuille non connecté",
+      "connectingWallet": "Changement de réseau et connexion du portefeuille...",
+      "walletConnected": "Portefeuille connecté : {account}",
+      "connectFailed": "Échec de la connexion : {message}",
+      "refreshFailed": "Échec de l’actualisation des données : {message}",
+      "addLiquiditySuccess": "Liquidité ajoutée avec succès",
+      "addLiquidityFailed": "Échec de l’ajout de liquidité : {message}",
+      "removeLiquiditySuccess": "Liquidité retirée avec succès",
+      "removeLiquidityFailed": "Échec du retrait de liquidité : {message}",
+      "swapSuccess": "Swap effectué avec succès",
+      "swapFailed": "Échec du swap : {message}",
+      "sameTokenError": "Le token d’entrée et le token de sortie ne peuvent pas être identiques"
+    }
+  }
+}

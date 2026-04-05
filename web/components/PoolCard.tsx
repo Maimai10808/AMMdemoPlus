@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 type Props = {
   token0Symbol: string;
   token1Symbol: string;
@@ -9,10 +13,12 @@ type Props = {
 };
 
 export default function PoolCard(props: Props) {
+  const t = useTranslations("PoolCard");
+
   return (
     <div className="grid gap-4 md:grid-cols-2">
       <div className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
-        <h2 className="text-lg font-semibold text-white">我的资产</h2>
+        <h2 className="text-lg font-semibold text-white">{t("myAssets")}</h2>
         <div className="mt-4 space-y-2 text-sm text-slate-300">
           <div className="flex justify-between">
             <span>{props.token0Symbol}</span>
@@ -23,14 +29,16 @@ export default function PoolCard(props: Props) {
             <span>{props.token1Balance}</span>
           </div>
           <div className="flex justify-between">
-            <span>LP Token</span>
+            <span>{t("lpToken")}</span>
             <span>{props.lpBalance}</span>
           </div>
         </div>
       </div>
 
       <div className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
-        <h2 className="text-lg font-semibold text-white">池子储备</h2>
+        <h2 className="text-lg font-semibold text-white">
+          {t("poolReserves")}
+        </h2>
         <div className="mt-4 space-y-2 text-sm text-slate-300">
           <div className="flex justify-between">
             <span>{props.token0Symbol}</span>

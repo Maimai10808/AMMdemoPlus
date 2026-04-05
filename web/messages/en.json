@@ -1,0 +1,67 @@
+{
+  "HomePage": {
+    "title": "Multi Token Pool DEX Demo",
+    "subtitle": "A multi-token AMM demo with wallet connection, liquidity management, and swaps."
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "placeholder": "Select language"
+  },
+  "AddLiquidityCard": {
+    "title": "Add Liquidity",
+    "amountLabel": "{symbol} Amount",
+    "amountPlaceholder": "Enter {symbol} amount",
+    "submit": "Add Liquidity"
+  },
+  "PoolCard": {
+    "myAssets": "My Assets",
+    "lpToken": "LP Token",
+    "poolReserves": "Pool Reserves"
+  },
+  "PoolOverviewCard": {
+    "title": "Pool Overview",
+    "token": "Token",
+    "myBalance": "My Balance",
+    "poolBalance": "Pool Balance",
+    "weight": "Weight",
+    "lpBalance": "LP Token Balance: {balance}"
+  },
+  "RemoveLiquidityCard": {
+    "title": "Remove Liquidity",
+    "lpAmountLabel": "LP Token Amount",
+    "lpAmountPlaceholder": "Enter LP Token amount",
+    "submit": "Remove Liquidity"
+  },
+  "SwapCard": {
+    "title": "Swap",
+    "tokenIn": "Input Token",
+    "tokenOut": "Output Token",
+    "amountIn": "Input Amount",
+    "amountPlaceholder": "Enter swap amount",
+    "estimatedOut": "Estimated Out: {amount} {symbol}",
+    "submit": "Execute Swap"
+  },
+  "WalletCard": {
+    "title": "Wallet",
+    "connected": "Connected: {account}",
+    "notConnected": "Not connected",
+    "nativeBalance": "Native ETH: {balance}",
+    "connect": "Connect Wallet",
+    "reconnect": "Reconnect",
+    "statusLabel": "Status",
+    "statusValues": {
+      "walletNotConnected": "Wallet not connected",
+      "connectingWallet": "Switching network and connecting wallet...",
+      "walletConnected": "Wallet connected: {account}",
+      "connectFailed": "Connection failed: {message}",
+      "refreshFailed": "Failed to refresh data: {message}",
+      "addLiquiditySuccess": "Liquidity added successfully",
+      "addLiquidityFailed": "Failed to add liquidity: {message}",
+      "removeLiquiditySuccess": "Liquidity removed successfully",
+      "removeLiquidityFailed": "Failed to remove liquidity: {message}",
+      "swapSuccess": "Swap completed successfully",
+      "swapFailed": "Swap failed: {message}",
+      "sameTokenError": "Token in and token out cannot be the same"
+    }
+  }
+}

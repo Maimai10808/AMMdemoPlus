@@ -31,6 +31,25 @@ declare global {
   }
 }
 
+type StatusKey =
+  | "walletNotConnected"
+  | "connectingWallet"
+  | "walletConnected"
+  | "connectFailed"
+  | "refreshFailed"
+  | "addLiquiditySuccess"
+  | "addLiquidityFailed"
+  | "removeLiquiditySuccess"
+  | "removeLiquidityFailed"
+  | "swapSuccess"
+  | "swapFailed"
+  | "sameTokenError";
+
+type StatusParams = {
+  account?: string;
+  message?: string;
+};
+
 export function useMultiTokenDex() {
   const [provider, setProvider] = useState<BrowserProvider | null>(null);
   const [signer, setSigner] = useState<any>(null);
@@ -45,7 +64,9 @@ export function useMultiTokenDex() {
   const [nativeBalance, setNativeBalance] = useState("0");
 
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("未连接钱包");
+
+  const [statusKey, setStatusKey] = useState<StatusKey>("walletNotConnected");
+  const [statusParams, setStatusParams] = useState<StatusParams>({});
 
   const [addAmounts, setAddAmounts] = useState<Record<string, string>>({});
   const [removeLpAmount, setRemoveLpAmount] = useState("");
@@ -68,7 +89,8 @@ export function useMultiTokenDex() {
   async function connectWallet() {
     try {
       setLoading(true);
-      setStatus("正在切换网络并连接钱包...");
+      setStatusKey("connectingWallet");
+      setStatusParams({});
 
       const built = await connectMultiDexWallet();
 
@@ -78,10 +100,14 @@ export function useMultiTokenDex() {
       setRouter(built.router);
       setAccount(built.account);
 
-      setStatus(`钱包已连接: ${built.account}`);
+      setStatusKey("walletConnected");
+      setStatusParams({ account: built.account });
     } catch (error: any) {
       console.error(error);
-      setStatus(error?.message || "连接失败");
+      setStatusKey("connectFailed");
+      setStatusParams({
+        message: error?.message || "Unknown error",
+      });
     } finally {
       setLoading(false);
     }
@@ -109,7 +135,10 @@ export function useMultiTokenDex() {
       }
     } catch (error: any) {
       console.error(error);
-      setStatus(error?.message || "刷新数据失败");
+      setStatusKey("refreshFailed");
+      setStatusParams({
+        message: error?.message || "Unknown error",
+      });
     }
   }
 
@@ -127,12 +156,16 @@ export function useMultiTokenDex() {
         addAmounts,
       });
 
-      setStatus("添加流动性成功");
+      setStatusKey("addLiquiditySuccess");
+      setStatusParams({});
       setAddAmounts({});
       await refreshAll();
     } catch (error: any) {
       console.error(error);
-      setStatus(error?.shortMessage || error?.message || "添加流动性失败");
+      setStatusKey("addLiquidityFailed");
+      setStatusParams({
+        message: error?.shortMessage || error?.message || "Unknown error",
+      });
     } finally {
       setLoading(false);
     }
@@ -153,12 +186,16 @@ export function useMultiTokenDex() {
         lpRawBalance,
       });
 
-      setStatus("移除流动性成功");
+      setStatusKey("removeLiquiditySuccess");
+      setStatusParams({});
       setRemoveLpAmount("");
       await refreshAll();
     } catch (error: any) {
       console.error(error);
-      setStatus(error?.shortMessage || error?.message || "移除流动性失败");
+      setStatusKey("removeLiquidityFailed");
+      setStatusParams({
+        message: error?.shortMessage || error?.message || "Unknown error",
+      });
     } finally {
       setLoading(false);
     }
@@ -171,7 +208,9 @@ export function useMultiTokenDex() {
       setLoading(true);
 
       if (swapTokenIn === swapTokenOut) {
-        throw new Error("tokenIn 和 tokenOut 不能相同");
+        setStatusKey("sameTokenError");
+        setStatusParams({});
+        return;
       }
 
       await swapAction({
@@ -183,13 +222,17 @@ export function useMultiTokenDex() {
         swapAmountIn,
       });
 
-      setStatus("兑换成功");
+      setStatusKey("swapSuccess");
+      setStatusParams({});
       setSwapAmountIn("");
       setSwapEstimatedOut("0");
       await refreshAll();
     } catch (error: any) {
       console.error(error);
-      setStatus(error?.shortMessage || error?.message || "兑换失败");
+      setStatusKey("swapFailed");
+      setStatusParams({
+        message: error?.shortMessage || error?.message || "Unknown error",
+      });
     } finally {
       setLoading(false);
     }
@@ -228,8 +271,10 @@ export function useMultiTokenDex() {
   return {
     account,
     loading,
-    status,
     nativeBalance,
+
+    statusKey,
+    statusParams,
 
     tokens,
     lpBalance,

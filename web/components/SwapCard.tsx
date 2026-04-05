@@ -1,4 +1,7 @@
+"use client";
+
 import type { PoolTokenInfo } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 type Props = {
   tokens: PoolTokenInfo[];
@@ -25,15 +28,19 @@ export default function SwapCard({
   swap,
   loading,
 }: Props) {
+  const t = useTranslations("SwapCard");
+
   const tokenOutSymbol =
-    tokens.find((t) => t.address === swapTokenOut)?.symbol || "";
+    tokens.find((tkn) => tkn.address === swapTokenOut)?.symbol || "";
 
   return (
     <div className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
-      <h2 className="text-lg font-semibold text-white">Swap</h2>
+      <h2 className="text-lg font-semibold text-white">{t("title")}</h2>
 
       <div className="mt-4">
-        <label className="mb-2 block text-sm text-slate-300">输入 Token</label>
+        <label className="mb-2 block text-sm text-slate-300">
+          {t("tokenIn")}
+        </label>
         <select
           value={swapTokenIn}
           onChange={(e) => setSwapTokenIn(e.target.value)}
@@ -48,7 +55,9 @@ export default function SwapCard({
       </div>
 
       <div className="mt-4">
-        <label className="mb-2 block text-sm text-slate-300">输出 Token</label>
+        <label className="mb-2 block text-sm text-slate-300">
+          {t("tokenOut")}
+        </label>
         <select
           value={swapTokenOut}
           onChange={(e) => setSwapTokenOut(e.target.value)}
@@ -63,17 +72,22 @@ export default function SwapCard({
       </div>
 
       <div className="mt-4">
-        <label className="mb-2 block text-sm text-slate-300">输入数量</label>
+        <label className="mb-2 block text-sm text-slate-300">
+          {t("amountIn")}
+        </label>
         <input
           value={swapAmountIn}
           onChange={(e) => setSwapAmountIn(e.target.value)}
-          placeholder="输入兑换数量"
+          placeholder={t("amountPlaceholder")}
           className="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
         />
       </div>
 
       <div className="mt-4 rounded-xl bg-slate-800 px-4 py-3 text-sm text-slate-300">
-        预计得到：{swapEstimatedOut} {tokenOutSymbol}
+        {t("estimatedOut", {
+          amount: swapEstimatedOut,
+          symbol: tokenOutSymbol,
+        })}
       </div>
 
       <button
@@ -81,7 +95,7 @@ export default function SwapCard({
         disabled={loading}
         className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3 font-medium text-white hover:bg-emerald-500 disabled:opacity-50"
       >
-        执行兑换
+        {t("submit")}
       </button>
     </div>
   );
